@@ -14,4 +14,9 @@ public class Keyword {
 	public String toString(){
 		return "["+name+","+weight+"]";
 	}
+	
+//	public void add(Keyword keyword){
+//		lst.add(keyword);
+////		System.out.println("Done");
+//    }
 }

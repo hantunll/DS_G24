@@ -3,26 +3,43 @@
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class WebTree {
 	public WebNode root;
+	private ArrayList<Keyword> lst;
+	
 	
 	public WebTree(WebPage rootPage){
 		this.root = new WebNode(rootPage);
+		this.lst = new ArrayList<Keyword>();
+		
 	}
+	/*
+	 * return the keyword that can be sorted in the main 
+	 */
+	
+	public ArrayList<Keyword> getKeywordList() {
+		return this.lst;
+	}
+	
+	
+	public void add(Keyword keyword){
+		lst.add(keyword);
+		System.out.println("Done");
+    }
+	
 	
 	public void setPostOrderScore(ArrayList<Keyword> keywords) throws IOException{
 		setPostOrderScore(root, keywords);
 	}
 	
 	private void setPostOrderScore(WebNode startNode, ArrayList<Keyword> keywords) throws IOException{
-		//1.compute the score of children nodes postorder
 		for(WebNode child : startNode.children){
 			setPostOrderScore(child,keywords);
 			
 		}
-		//**setNode score of startNode
 		startNode.setNodeScore(keywords);
 		}
 	
@@ -30,21 +47,25 @@ public class WebTree {
 		eularPrintTree(root);
 	}
 	
-	private void eularPrintTree(WebNode startNode){
+
+		
+	
+	public void eularPrintTree(WebNode startNode){
 		int nodeDepth = startNode.getDepth();
 		
 		if(nodeDepth > 1) System.out.print("\n" + repeat("\t", nodeDepth-1));
-		//print "("
 		System.out.print("(");
-		//print "name","score"
 		System.out.print(startNode.webPage.name+","+startNode.nodeScore);
 		
-		//2.print child preorder
+		/*
+		 * add to the keyword list
+		 */				
+		lst.add(new Keyword(startNode.webPage.name, startNode.nodeScore));
+
 		for(WebNode child : startNode.children){
 			eularPrintTree(child);
 		}
 		
-		//print ")"
 		System.out.print(")");
 		
 		/*for example
@@ -68,4 +89,5 @@ public class WebTree {
 		}
 		return retVal;
 	}
+
 }

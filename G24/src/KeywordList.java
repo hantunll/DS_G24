@@ -4,13 +4,88 @@ public class KeywordList {
 	private ArrayList<Keyword> lst;
 	
 	public KeywordList(){
+		ArrayList <Keyword> keywordList = new ArrayList<Keyword>();
+		keywordList.add(new Keyword("Title of the book", 5));
+		keywordList.add(new Keyword("EPUB", 4));
+		keywordList.add(new Keyword("Amazon", 4));
+		keywordList.add(new Keyword("E-book", 4));
+		keywordList.add(new Keyword("pdf", 4));
+		keywordList.add(new Keyword("free", 3));
+		keywordList.add(new Keyword("github", 2));
+		keywordList.add(new Keyword("fiction book", 2));
+		keywordList.add(new Keyword("online", 2));
+		//printKeywordList(keywordList);
 		this.lst = new ArrayList<Keyword>();
     }
+	
+	public ArrayList<Keyword> getKeywordList() {
+		return this.lst;
+	}
+	
 	
 	public void add(Keyword keyword){
 		lst.add(keyword);
 //		System.out.println("Done");
     }
+	
+	//quick sort
+	public void sort(){
+		if(lst.size() == 0)
+		{
+			System.out.println("InvalidOperation");
+		}
+		else 
+		{
+			quickSort(0, lst.size()-1);
+//			System.out.println("Done");
+		}
+
+	}
+	
+
+	private void quickSort(int low, int high){
+	    if(low < high){
+	        int p = partition(low, high);
+	        quickSort(low, p-1);
+	        quickSort(p+1, high);
+	    }
+	}
+	
+	private int partition(int leftbound, int rightbound){
+		int p = leftbound, j;
+		for (j = leftbound+1; j<= rightbound ;j++) {
+			if(lst.get(j).weight < lst.get(leftbound).weight) {
+				swap(++p,j);
+			}
+		}
+		swap(leftbound, p);
+		return p;
+	}
+	
+	private void swap(int aIndex, int bIndex){
+		Keyword temp = lst.get(aIndex);
+		lst.set(aIndex, lst.get(bIndex));
+		lst.set(bIndex, temp);
+	}
+	
+	public void output(){
+		//TODO: write output and remove all element logic here...
+		StringBuilder sb = new StringBuilder();
+		
+//		for(int i=0; i<lst.size();i++){
+//			Keyword k = lst.get(i);
+//			if(i>0)sb.append(" ");
+//			sb.append(k.toString());
+//		}
+		for(int i=lst.size()-1; i>=0;i--){
+			Keyword k = lst.get(i);
+			if(i>0)sb.append(" ");
+			sb.append(k.toString());
+
+		}
+		
+		System.out.println(sb.toString());	
+	}
 	
 	public void find(String s){
 		int maxValue = -1;
