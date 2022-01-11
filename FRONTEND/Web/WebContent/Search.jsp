@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>GoogleSearch</title>
+<title>E-Book Engine</title>
 <style type="text/css">
 .button{
 	position:absolute;
@@ -220,19 +220,19 @@
 <script type="text/javascript">
 function click10() {
 	document.getElementsByName("searchNum")[0].value = 10;
-	document.getElementsByName("searchNum")[0].style.color = '#0489B1';
+	document.getElementsByName("searchNum")[0].style.color = '#2F4F4F';
 }
 function click20() {
 	document.getElementsByName("searchNum")[0].value = 20;
-	document.getElementsByName("searchNum")[0].style.color = '#0489B1';
+	document.getElementsByName("searchNum")[0].style.color = '#2F4F4F';
 }
 function click40() {
 	document.getElementsByName("searchNum")[0].value = 40;
-	document.getElementsByName("searchNum")[0].style.color = '#0489B1';
+	document.getElementsByName("searchNum")[0].style.color = '#2F4F4F';
 }
 function click80() {
 	document.getElementsByName("searchNum")[0].value = 80;
-	document.getElementsByName("searchNum")[0].style.color = '#0489B1';
+	document.getElementsByName("searchNum")[0].style.color = '#2F4F4F';
 }
 </script>
 </head>
@@ -271,10 +271,7 @@ onfocus="placeholder= '' " onblur="placeholder='Please enter your keyword!!'" />
 <button type='button' class='button' name='button80' onclick='click80()' style='border-radius:10px;cursor:pointer;margin-left:52.5px'>80</button>
 </div>
 <div>
-<input type='text' name='searchNum' value='10' style='color:#0489B1;border-style:none;background-color:#0489B1'>
-</div>
-<div>
-<input type='image' src="images/loupe-2.png" 
+<input type='image' src="images/loupe.png" 
 style='position:absolute;width:37px;height:37px;left:50%;top:50%;margin-top:-55px;
 margin-left:368px '/>
 </div>

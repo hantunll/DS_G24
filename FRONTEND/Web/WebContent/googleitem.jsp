@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>GoogleSearch</title>
+<title>Result</title>
 <style type="text/css">
 #padding{
 	padding: 0px 0px 15px 15px;
@@ -23,7 +23,7 @@ text-decoration:underline;
 </style>
 </head>
 <body>
-<body style='background-color: #01A9DB'>
+<body style='background-color: #2F4F4F'>
 <form action='${requestUri}' method='get'>
 
 	<div style='position: absolute;margin-top:190px;margin-left:50px'>
@@ -31,23 +31,26 @@ text-decoration:underline;
 		String[][] orderList = (String[][]) request.getAttribute("query");
 		for (int i = 0; i < orderList.length; i++) {
 			String s=orderList[i][1];
+			if(s.contains("&sa")) {
+				s = s.substring(7, s.indexOf("&sa"));
+			}
 			s=s.substring(7);
 		%>
 		
-		<a href='<%=s%>'><%=orderList[i][0]%> </a> <br>連結<br>
+		<a href='<%=s%>'><%=orderList[i][0]%> </a> <br>link<br>
 		<br>
 		<%
-}
+		}
 %>
 	</div>
 	<div>
-		<img src="images/band-2.png"
+		<img src="images/books.jpg"
 			style='position: absolute; width: 150px; height: 100px; left: 50%; top: 50%; margin-top: -280px; margin-left: -590px'>
 	</div>
 		<div>
 		<input type='text' class="border-style" id="padding" name='keyword'
 			style='font-size: 120%; position: absolute; left: 50%; top: 48%; margin-top: -250px; margin-left: -400px; width: 800px; height: 25px'
-			placeholder = '請輸入關鍵字' value='<%=request.getParameter("keyword")%>'/>
+			placeholder = 'Please enter your keyword!!' value='<%=request.getParameter("keyword")%>'/>
 	</div>
 
 </form>
