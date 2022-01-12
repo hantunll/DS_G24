@@ -33,8 +33,9 @@ text-decoration:underline;
 			String s=orderList[i][1];
 			if(s.contains("&sa")) {
 				s = s.substring(7, s.indexOf("&sa"));
-			}
+			}else{
 			s=s.substring(7);
+                        }
 		%>
 		
 		<a href='<%=s%>'><%=orderList[i][0]%> </a> <br>link<br>
