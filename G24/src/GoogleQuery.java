@@ -37,15 +37,21 @@ public class GoogleQuery
 	//public String subWebUrl;
 	
 	public String subWebName;
+	
+	public URLEncode en = new URLEncode();
+
 
 	public GoogleQuery(String searchKeyword)
 
 	{
 
+//		this.searchKeyword = searchKeyword;
+//
+//		this.url = "http://www.google.com/search?q="+searchKeyword+"&oe=utf8&num=10";
 		this.searchKeyword = searchKeyword;
-
-		this.url = "http://www.google.com/search?q="+searchKeyword+"&oe=utf8&num=5";
-
+		System.out.println(this.searchKeyword);
+		String enKeyword = en.urlEncoder(searchKeyword);
+		this.url = "http://www.google.com/search?q=" + enKeyword + "&oe=utf8&num=20";
 	}
 	/*
 	 * Another constructor
